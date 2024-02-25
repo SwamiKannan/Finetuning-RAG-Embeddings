@@ -1,9 +1,8 @@
 import os
 from finetune_utils import finetune, create_json_input
 
-EMBEDDINGS_PATH = '..//embeddings'
-MODEL_ID = 'physics_2'
-MODEL_INPUT_PATH = os.path.join(EMBEDDINGS_PATH, MODEL_ID)
+MODEL_ID = 'BAAI/bge-small-en'
+MODEL_INPUT_PATH = MODEL_ID
 MODEL_OUTPUT = 'physics_3'
 MODEL_OUTPUT_PATH = os.path.join(EMBEDDINGS_PATH, MODEL_OUTPUT)
 
@@ -21,6 +20,4 @@ TEMPLATED_PATH = os.path.join(TEMPLATED_JSON_PATH, OUTPUT_JSON_FILE)
 NUMBER_OF_CORPUS_ANSWERS = 10
 
 if __name__ == "__main__":
-    create_json_input(BASE_INPUT_PATH, TEMPLATED_PATH,
-                      NUMBER_OF_CORPUS_ANSWERS)
     finetune(TEMPLATED_PATH, MODEL_INPUT_PATH, MODEL_OUTPUT_PATH,)
