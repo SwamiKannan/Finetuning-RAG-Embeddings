@@ -17,6 +17,7 @@ Hence, Fine-tuning is the process of adjusting your embedding model to better fi
 
 2. <b> Create a custom question answer dataset from your content </b>
     This requires an LLM such as OpenAI to generate custom question-reference sets.
+   Follow the instructions as described <a href="https://docs.llamaindex.ai/en/latest/examples/finetuning/embeddings/finetune_embedding.html#generate-corpus">here</a>
 ### Finetuning the model
 
 ### Testing the model
