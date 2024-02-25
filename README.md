@@ -2,7 +2,7 @@
 
 <p align="center">
 <img src = "https://github.com/SwamiKannan/Finetuning-RAG-Embeddings/blob/main/images/cover.png"><br>
-<sub> Credit: <a href="https://www.freepik.com/premium-photo/tuning-radio-radio-station_16035333.htm">Freepik</a></sub>
+<sub> Base Image Credit: <a href="https://www.freepik.com/premium-photo/tuning-radio-radio-station_16035333.htm">Freepik</a> . Editing by <a href="https://github.com/SwamiKannan">Swaminathan Kannan</a></sub>
 </p>
 
 ## Introduction
@@ -18,6 +18,7 @@ Hence, Fine-tuning is the process of adjusting your embedding model to better fi
 2. <b> Create a custom question answer dataset from your content </b>
     This requires an LLM such as OpenAI to generate custom question-reference sets.
    Follow the instructions as described <a href="https://docs.llamaindex.ai/en/latest/examples/finetuning/embeddings/finetune_embedding.html#generate-corpus">here</a>
+   
 ### Finetuning the model
 
 ### Testing the model
