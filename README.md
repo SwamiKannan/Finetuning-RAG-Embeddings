@@ -20,5 +20,6 @@ Hence, Fine-tuning is the process of adjusting your embedding model to better fi
    Follow the instructions as described <a href="https://docs.llamaindex.ai/en/latest/examples/finetuning/embeddings/finetune_embedding.html#generate-corpus">here</a>
    
 ### Finetuning the model
+While converting the dataset to the appropriate JSON structure, we return the train_path (path for the training split), the test_path (path for the test split) and the main_path (the parent path for storing the final model)
 
 ### Testing the model
