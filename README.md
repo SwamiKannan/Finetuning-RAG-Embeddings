@@ -10,6 +10,10 @@ Fine tuning embeddings is super important when the distribution of the data you 
 Hence, Fine-tuning is the process of adjusting your embedding model to better fit the domain of your data. Though before fine-tuning it yourself, you should always take a look at the <a href="https://huggingface.co/models"> Hugging Face model database and check if someone already fine-tuned an embedding model on data that is similar to yours.
 
 ## Usage
+```
+Performing a benchmark across multiple tuned models <WIP>
+```
+
 ### Converting dataset into the appropriate JSON structure
 1. <b> If you have your own question - response / question - answer dataset</b>
     You can peruse <a href="https://huggingface.co/docs/datasets/index">Huggingface's datasets</a> to check if any of the datasets are relevant to your own domain.
