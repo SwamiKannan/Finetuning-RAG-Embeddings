@@ -129,8 +129,8 @@ class TBSentenceTransformer(SentenceTransformer):
         total_norm = 0
         name_replace = {"encoder": "enc", "layer": "l"}
         for epoch in trange(epochs, desc="Epoch", disable=not show_progress_bar):
+            epoch_loss = 0
             training_steps = 0
-
             for loss_model in loss_models:
                 loss_model.zero_grad()
                 loss_model.train()
@@ -163,7 +163,7 @@ class TBSentenceTransformer(SentenceTransformer):
                         loss_value = loss_model(features, labels)
                         loss_value.backward()
                         running_loss += loss_value.item()
-
+                        epoch_loss += loss_value.item()
                         if tensorboard_params['steps'] > 0 and training_steps % \
                                 tensorboard_params['steps'] == 0:
 
@@ -214,8 +214,8 @@ class TBSentenceTransformer(SentenceTransformer):
             self._eval_during_training(evaluator, output_path, save_best_model, epoch, -1, callback)
             if tensorboard_params['loss']:
                                     self.log_writer.add_scalar('train_loss_per_epoch',
-                                                        running_loss / tensorboard_params['steps'],
-                                                        global_step)
+                                                        running_loss / training_steps,
+                                                        epoch)
         if evaluator is None and output_path is not None:   # No evaluator, but output path: save final model version
             self.save(output_path)
         if checkpoint_path is not None:
