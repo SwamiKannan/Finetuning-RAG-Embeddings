@@ -192,7 +192,6 @@ class TBSentenceTransformer(SentenceTransformer):
                                 self.log_writer.add_scalar(f'global_norm_{loss_model.__class__.__name__}',
                                                        total_norm,
                                                        global_step)
-
                             running_loss = 0
                             total_norm = 0
 
@@ -202,6 +201,7 @@ class TBSentenceTransformer(SentenceTransformer):
                     optimizer.zero_grad()
                     if not skip_scheduler:
                         scheduler.step()
+            
                 training_steps += 1
                 global_step += 1
                 if evaluation_steps > 0 and training_steps % evaluation_steps == 0:
@@ -211,16 +211,17 @@ class TBSentenceTransformer(SentenceTransformer):
                         loss_model.train()
                 if checkpoint_path is not None and checkpoint_save_steps is not None and checkpoint_save_steps > 0 and global_step % checkpoint_save_steps == 0:
                     self._save_checkpoint(checkpoint_path, checkpoint_save_total_limit, global_step)
-            self._eval_during_training(evaluator, output_path, save_best_model, epoch, -1, callback)
             if tensorboard_params['loss']:
-                                    self.log_writer.add_scalar('train_loss_per_epoch',
-                                                        running_loss / training_steps,
-                                                        epoch)
+                print(f'Epoch loss: {epoch_loss}, training_steps: {training_steps}, epoch: {epoch}')
+                self.log_writer.add_scalar('train_loss_per_epoch',
+                                            epoch_loss / training_steps, epoch)
+            self._eval_during_training(evaluator, output_path, save_best_model, epoch, -1, callback)
+            
         if evaluator is None and output_path is not None:   # No evaluator, but output path: save final model version
             self.save(output_path)
         if checkpoint_path is not None:
             self._save_checkpoint(checkpoint_path, checkpoint_save_total_limit, global_step)
-        
+
 
     @property
     def max_seq_length(self):
