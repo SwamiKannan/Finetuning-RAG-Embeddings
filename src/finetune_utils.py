@@ -14,6 +14,7 @@ def create_json_input(filename, output_file, negative_size):
         dict_sample = json.load(fi)
     content = create_corpus(dict_sample, negative_size)
     create_json(content, output_file)
+    os.remove(filename)
     print('JSON data created and saved.')
 
 
@@ -62,17 +63,16 @@ def finetune2(json_file, model_id, model_output_path, epochs=3, w_path=os.getcwd
 
 
 def final_finetune(input_path, output_path, corpus_count, model_input,
-                   model_output):
+                   model_output, epochs=3):
     create_json_input(input_path, output_path,
                       corpus_count)
-    finetune(output_path, model_input, model_output)
+    finetune(output_path, model_input, model_output, epochs)
 
 
 def final_finetune2(input_path, output_path, corpus_count, model_input,
-                    model_output, w_path):
+                    model_output, w_path, epochs=3):
     print('Creating JSON input for finetuning')
     create_json_input(input_path, output_path,
                       corpus_count)
-    print('JSON file created.')
-    finetune2(output_path, model_input, model_output, w_path=w_path)
+    finetune2(output_path, model_input, model_output, epochs, w_path)
     print(f'Finetuning completed. Model stored at {model_output}')
