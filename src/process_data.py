@@ -44,7 +44,7 @@ class HFJSONCreator(JSONAbstractCreator):
         print('Downloading data.....')
         self.data = load_dataset(self.dataset_name, split=self.split)
         if self.to_disk:
-            print('Data downloading... saving data')
+            print('Data downloaded... saving data')
             self.filename = self.dataset_name+'_'+self.split
             self.data.save_to_disk(os.path.join(self.save_download_path, self.download_filename))
         else:
