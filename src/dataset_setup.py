@@ -2,12 +2,12 @@ import os
 
 
 class Data_setup():
-    def __init__(self, main_path, model_outputs=None, corpus_count=5):
+    def __init__(self, main_path, split='train', model_outputs=None, corpus_count=5):
         self.main_path = main_path
         self.EMBEDDINGS_PATH = 'embeddings'
         self.DATA_PATH = 'data'
         self.LOG_PATH = ''
-        self.FINAL_JSON = "final_json.json"
+        self.FINAL_JSON = "final_json_"+split+".json"
         self.CORPUS_COUNT = corpus_count
         self.data_path = self.make_dirs(self.DATA_PATH)
         self.embeddings_path = self.make_dirs(folder_name=self.EMBEDDINGS_PATH, path=self.data_path)
