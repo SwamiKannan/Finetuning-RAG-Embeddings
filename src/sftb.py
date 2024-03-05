@@ -212,7 +212,6 @@ class TBSentenceTransformer(SentenceTransformer):
                 if checkpoint_path is not None and checkpoint_save_steps is not None and checkpoint_save_steps > 0 and global_step % checkpoint_save_steps == 0:
                     self._save_checkpoint(checkpoint_path, checkpoint_save_total_limit, global_step)
             if tensorboard_params['loss']:
-                print(f'Epoch loss: {epoch_loss}, training_steps: {training_steps}, epoch: {epoch}')
                 self.log_writer.add_scalar('train_loss_per_epoch',
                                             epoch_loss / training_steps, epoch)
             self._eval_during_training(evaluator, output_path, save_best_model, epoch, -1, callback)
@@ -264,4 +263,3 @@ class TBSTFE(SentenceTransformersFinetuneEngine):
                          evaluation_steps,
                          use_all_docs)
         self.model = TBSentenceTransformer(model_id, log_path=writer_path)
-        print('Writer path', writer_path)
