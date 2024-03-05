@@ -84,16 +84,18 @@ class HFJSONCreator(JSONAbstractCreator):
         output_filename = self.INTERIM_JSON_FILE_NAME+'_'+self.split
         qa_train, qa_test = self.create_all_dicts()
         train_path = os.path.join(self.data_path, output_filename+'.json')
-        test_path = os.path.join(self.data_path,
-                                 output_filename.replace(self.split, '') +
-                                 '_test.json')
         with open(os.path.join(train_path), 'w',
                   encoding='utf-8') as f:
             json.dump(qa_train, f)
+        print(f'Interim json: {output_filename}.json file written in {self.data_path}')
         if qa_test:
+            test_path = os.path.join(self.data_path,
+                                     output_filename.replace(self.split, '') + 'test.json')
             with open(os.path.join(test_path), 'w', encoding='utf-8') as f:
                 json.dump(qa_test, f)
-        print(f'Interim json: {output_filename}.json file written in {self.data_path}')
+            print(f"Interim json: {output_filename.replace(self.split, '')}test.json file written in {self.data_path}")
+        else:
+            test_path = None
         return train_path, test_path, self.data_path
 
 
