@@ -39,15 +39,19 @@ for k, v in model_dict.items():
         sciq.create_all_dicts()
         train_path, test_path, main_dir = sciq.write_dict()
         if split == 'train':
-            final_finetune2(input_path=train_path, output_path=data_sciq.final_json,
+            final_finetune2(input_path=train_path,
+                            output_path=data_sciq.final_json,
                             corpus_count=CORPUS_COUNT, model_input=k,
-                            model_output=data_sciq.model_path, w_path=data_sciq.log_path)
+                            model_output=data_sciq.model_path,
+                            w_path=data_sciq.log_path)
             if test_path:
-                create_json_input(filename=test_path, output_file=data_sciq.final_json[:-4]+'_test.json',
+                create_json_input(filename=test_path,
+                                  output_file=data_sciq.final_json[:-4]+'_test.json',
                                   negative_size=CORPUS_COUNT)
         
         else:
-            create_json_input(filename=train_path, output_file=data_sciq.final_json',
+            create_json_input(filename=train_path,
+                              output_file=data_sciq.final_json,
                               negative_size=CORPUS_COUNT)
         
 
