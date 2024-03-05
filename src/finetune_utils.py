@@ -44,3 +44,35 @@ def finetune2(json_file, model_id, model_output_path, epochs=3, w_path=os.getcwd
     finetuner.finetune()
     finetuned_model = finetuner.get_finetuned_model()
     finetuned_model.to_json()
+
+
+# def finetune3(json_file, model_id, model_output_path, epochs=3, w_path=os.getcwd()):
+#     print('Initiating trial3 tuning')
+#     train_dataset = EmbeddingQAFinetuneDataset.from_json(json_file)
+#     finetuner = SentenceTransformersFinetuneEngine(
+#       dataset=train_dataset,
+#       model_id=model_id,
+#       model_output_path=model_output_path,
+#       epochs=epochs,
+#       log_path=w_path
+#     )
+#     finetuner.finetune()
+#     finetuned_model = finetuner.get_finetuned_model()
+#     finetuned_model.to_json()
+
+
+def final_finetune(input_path, output_path, corpus_count, model_input,
+                   model_output):
+    create_json_input(input_path, output_path,
+                      corpus_count)
+    finetune(output_path, model_input, model_output)
+
+
+def final_finetune2(input_path, output_path, corpus_count, model_input,
+                    model_output, w_path):
+    print('Creating JSON input for finetuning')
+    create_json_input(input_path, output_path,
+                      corpus_count)
+    print('JSON file created.')
+    finetune2(output_path, model_input, model_output, w_path=w_path)
+    print(f'Finetuning completed. Model stored at {model_output}')
