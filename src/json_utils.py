@@ -17,7 +17,7 @@ def create_corpus(qa_items, negative_size, all_ids=[]):
     corpus_check = {}
     content = []
     index = list(qa_items.keys())
-    print('Index length', len(index))
+    print(f'{len(index)} entries processed')
     for i in index:
         uiud_q, uiud_r = 0, 0
         while uiud_q in all_ids:
