@@ -88,3 +88,17 @@ pip install llama-index-embeddings-openai
 cd..
 python src/main.py 
 ```
+## Output
+```
+MAIN_PATH
+└───data
+    ├───dataset
+    │   └───DATASET
+    ├───embeddings
+    │   └───MODEL_OUTPUT
+    │       ├───1_Pooling
+    │       ├───2_Normalize
+    │       └───eval
+    └───logs
+        └───train
+```
