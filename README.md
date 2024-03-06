@@ -30,7 +30,7 @@ final_finetune(train_path, os.path.join('..', main_dir, FILE_PATH), CORPUS_COUNT
 where: <br>
 FILE_PATH = path w
 
-### Testing the model
+### Model evaluations
 < WIP>
 <br />
 
