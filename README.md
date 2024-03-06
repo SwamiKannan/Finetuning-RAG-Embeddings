@@ -102,3 +102,7 @@ MAIN_PATH
     └───logs
         └───train
 ```
+## Training record
+<p align = "center">
+<img src = "https://github.com/SwamiKannan/Finetuning-RAG-Embeddings/blob/main/src/finetune_examples/reports/tensorboard.png">
+</p>
