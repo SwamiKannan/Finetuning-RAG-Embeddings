@@ -23,6 +23,7 @@ CORPUS_COUNT = 5
 MODEL_OUTPUT = 'embeddings_camelai'
 TEST_RATIO = 0.2
 SPLITS = ['train']
+EPOCHS = 3
 
 
 def transform_df(df):
@@ -47,7 +48,7 @@ for k, v in model_dict.items():
         if split == 'train':
             final_finetune2(input_path=train_path, output_path=data_camelai.final_json,
                             corpus_count=CORPUS_COUNT, model_input=k,
-                            model_output=data_camelai.model_path, w_path=data_camelai.log_path)
+                            model_output=data_camelai.model_path, w_path=data_camelai.log_path,epochs=EPOCHS)
             if test_path:
                 create_json_input(filename=test_path, 
                                   output_file=data_camelai.final_json[:-4]+'test.json',
